@@ -21,9 +21,10 @@
   ###
 
   #### See Video of Usage Here:
-  
-  #### See Fully Deployed App on Heroku:
-  
+  https://drive.google.com/file/d/1scHEnZ_e-Pm8yUV5bKGJd-DEgLMuca6n/view
+  #### See Fully Deployed App on GitHub Pages:
+  https://kanilionis.github.io/reactEmployeeDirectory/
+
   ## License
   #### This project is licensed under the MIT license.
   ## Contributing
