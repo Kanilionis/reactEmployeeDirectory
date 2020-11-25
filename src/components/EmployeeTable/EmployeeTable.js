@@ -28,9 +28,7 @@ function EmployeeTable(props) {
         </tr>
       </tbody>
       {/* have to pass an anonymous function to contain a function so the function defined doesn't run until it is supposed to - basically hiding the filterArray until the user clicks on the remove button */}
-      
-    
-    </>
+          </>
   );
 }
 

@@ -9,19 +9,21 @@ class App extends React.Component {
   
   state = {
     employees: employees,
-    filtered: employees
+    // filtered: employees
   };
 
   componentDidMount(){
     console.log(employees)
-    this.setState({employees: employees, filtered: employees})
+    this.setState({employees: employees})
 
   }
 
 
 
   handleInputChange = event => {
+    event.preventDefault()
     var value = event.target.value;
+    console.log(value)
     var filter = this.state.employees.filter( employee => {
       var checkValues = Object.values(employee)
       .join("").toLowerCase()
@@ -29,7 +31,7 @@ class App extends React.Component {
 
       return checkValues.indexOf(value.toLowerCase()) !== -1
     })
-    this.setState({filtered: filter})
+        this.setState({employees: filter})
     
   };
 
@@ -56,9 +58,9 @@ class App extends React.Component {
  // sort table by column
   sortLastName = () => {
     const newEmployeesArray = this.state.employees.slice(0)
-    console.log(newEmployeesArray)
     const sortedArray = newEmployeesArray.sort((a, b) => a.lastName.localeCompare(b.lastName))
     this.setState({...this.state, employees: sortedArray});
+    console.log(sortedArray)
 };
   sortFirstName = () => {
     const newEmployeesArray = this.state.employees.slice(0)
@@ -92,13 +94,12 @@ class App extends React.Component {
         <th scope="col-1"></th>
         <th scope="col-1" className="sort" onClick={this.sortId}>id</th>
         <th scope="col-2" className="sort" onClick={this.sortLastName}>Last Name</th>
-      
         <th scope="col-2" className="sort" onClick={this.sortFirstName}>First Name</th>
         <th scope="col-2" className="sort" onClick={this.sortOccupation}>Occupation</th>
         <th scope="col-1"></th>
         </tr>
         </thead>
-      {this.state.filtered.map(employee => (
+      {this.state.employees.map(employee => (
         <>
         <EmployeeTable key={employee.id} {...employee} deleteEmployee={this.deleteEmployee}/>
        
