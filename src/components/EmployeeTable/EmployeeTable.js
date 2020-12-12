@@ -11,7 +11,7 @@ function EmployeeTable(props) {
     <>
     
    
-      <tbody>
+      <tbody className="tbody">
         <tr>
         <th ><img src={props.image} alt="random employee"/></th>
         <td>{props.id}</td>

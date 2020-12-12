@@ -9,14 +9,14 @@ class App extends React.Component {
   
   state = {
     employees: employees,
-    // filtered: employees
+    filtered: employees
   };
 
-  componentDidMount(){
-    console.log(employees)
-    this.setState({employees: employees})
+  // componentDidMount(){
+  //   console.log(employees)
+  //   this.setState({employees: employees})
 
-  }
+  // }
 
 
 
@@ -31,7 +31,7 @@ class App extends React.Component {
 
       return checkValues.indexOf(value.toLowerCase()) !== -1
     })
-        this.setState({employees: filter})
+        this.setState({filtered: filter})
     
   };
 
@@ -49,9 +49,9 @@ class App extends React.Component {
   deleteEmployee = (id) => {
     // modify the array in state and filter out the one which matched whatever id is passed in
     console.log(id)
-    const filteredArray = this.state.employees.filter( employee => employee.id !== id )
+    const filteredArray = this.state.filtered.filter( employee => employee.id !== id )
     console.log(filteredArray)
-    this.setState({employees: filteredArray})
+    this.setState({filtered: filteredArray})
   };
 
  
@@ -59,23 +59,23 @@ class App extends React.Component {
   sortLastName = () => {
     const newEmployeesArray = this.state.employees.slice(0)
     const sortedArray = newEmployeesArray.sort((a, b) => a.lastName.localeCompare(b.lastName))
-    this.setState({...this.state, employees: sortedArray});
+    this.setState({filtered: sortedArray});
     console.log(sortedArray)
 };
   sortFirstName = () => {
     const newEmployeesArray = this.state.employees.slice(0)
     const sortedArray = newEmployeesArray.sort((a, b) => a.firstName.localeCompare(b.firstName))
-    this.setState({...this.state, employees: sortedArray});
+    this.setState({filtered: sortedArray});
   };
   sortOccupation = () => {
     const newEmployeesArray = this.state.employees.slice(0)
     const sortedArray = newEmployeesArray.sort((a, b) => a.occupation.localeCompare(b.occupation))
-    this.setState({...this.state, employees: sortedArray});
+    this.setState({filtered: sortedArray});
   };
   sortId = () => {
     const newEmployeesArray = this.state.employees.slice(0)
     const sortedArray = newEmployeesArray.sort((a, b) => a.id - b.id)
-    this.setState({...this.state, employees: sortedArray});
+    this.setState({filtered: sortedArray});
   };
   
   render(){
@@ -83,7 +83,7 @@ class App extends React.Component {
   return (
     
     <>
-      <h1>Employee List</h1>
+      <h1 className="header">Employee List</h1>
       {/* map over the array in the state, render FriendCard each time */}
         <>
       <SearchEmployee handleInputChange={this.handleInputChange}/>
@@ -99,7 +99,7 @@ class App extends React.Component {
         <th scope="col-1"></th>
         </tr>
         </thead>
-      {this.state.employees.map(employee => (
+      {this.state.filtered.map(employee => (
         <>
         <EmployeeTable key={employee.id} {...employee} deleteEmployee={this.deleteEmployee}/>
        

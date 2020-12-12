@@ -4,7 +4,7 @@ function SearchEmployee(props) {
   
   return (
     <>
-    <form>
+    <form className="form">
       <div className="form-group">
         <label htmlFor="search">Search for an Employee or Occupation</label>
         <input
